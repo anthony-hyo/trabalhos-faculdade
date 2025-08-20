@@ -17,6 +17,8 @@ def valid_pedido(conversor: Callable[[str], float | int], mensagem: str, erro: s
     :param mensagem: Mensagem exibida para o usuário
     :param erro: Mensagem de erro para entrada inválida
     :param alert: Mensagem de alerta se o número for menor ou igual a zero
+
+    :return: int | float | None
     """
     while True:
         try:
