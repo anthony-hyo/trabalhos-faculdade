@@ -1,62 +1,69 @@
+from typing import Callable
+
 class Style:
     RESET = "\033[0m"
     GREEN = "\033[32m"
     BLUE = "\033[34m"
     BOLD = "\033[1m"
-    BG_RED = "\033[41m"
+    DANGER = "\033[97;41m"
+    ALERT = "\033[30;43m"
 
 print(f"{Style.GREEN}Bem-vindo a Loja do {Style.BOLD}Anthony De Sousa Fidelis!{Style.RESET}")
 
-def valid_int(message: str, message_error: str) -> int | bool:
-    """Valid an input message return the value in int,
-    if not a valid int, return an error message
-    """
-    try:
-        return int(input(Style.BLUE + message + Style.RESET))
-    except ValueError:
-        print(Style.BG_RED + message_error + Style.RESET)
-        return valid_int(message, message_error)
+def valid_pedido(conversor: Callable[[str], float | int], mensagem: str, erro: str, alert: str) -> int | float | None:
+    """Valida a entrada do usuário e retorna um número inteiro ou float
 
-def valid_float(message: str, message_error: str) -> float | bool:
-    """Valid an input message return the value in int,
-    if not a valid int, return an error message
+    :param conversor: Função para converter a entrada (int ou float)
+    :param mensagem: Mensagem exibida para o usuário
+    :param erro: Mensagem de erro para entrada inválida
+    :param alert: Mensagem de alerta se o número for menor ou igual a zero
     """
-    try:
-        return float(input(Style.BLUE + message + Style.RESET))
-    except ValueError:
-        print(Style.BG_RED + message_error + Style.RESET)
-        return valid_float(message, message_error)
+    while True:
+        try:
+            valor = conversor(input(Style.BLUE + mensagem + Style.RESET))
 
-def fees_calc(installments: int) -> float:
-    """Return the fees for each installment"""
-    if 4 <= installments < 6:
+            if valor <= 0:
+                print(Style.ALERT + alert + Style.RESET)
+                continue
+
+            return valor
+        except ValueError:
+            print(Style.DANGER + erro + Style.RESET)
+
+def fees_calc(parcelas: int) -> float:
+    """Retorna a taxa de juros de acordo com a quantidade de parcelas
+
+    :param parcelas: Quantidade de percelas
+    """
+    if 4 <= parcelas < 6:
         return .04
-    elif 6 <= installments < 9:
+    elif 6 <= parcelas < 9:
         return .08
-    elif 9 <= installments < 13:
+    elif 9 <= parcelas < 13:
         return .16
-    elif installments >= 13:
+    elif parcelas >= 13:
         return .32
     else:
         return 0
 
 while True:
     # Solicita o valor do pedido
-    value: float = valid_float("Entre com o valor do pedido: ", "Valor do pedido é invalido! digite apenas numeros.")
+    valor_pedido: float = valid_pedido(float, "Entre com o valor do pedido: ", "Valor do pedido é invalido! digite apenas numeros.", "O valor do pedido deve ser maior que zero!")
 
     # Solicita a quantidade de parcelas
-    installments: int = valid_int("Entre com a quantidade de parcelas: ", "Quantidade de parcelas é invalida! digite apenas numeros.")
+    quantidade_parcelas: int = valid_pedido(int, "Entre com a quantidade de parcelas: ", "Quantidade de parcelas é invalida! digite apenas numeros.", "A quantidade de parcelas deve ser maior que zero!")
 
-    # Calcula os juros, valor da parcela e valor total parcelado
-    juros = fees_calc(installments)
-    valorDaParcela: float = (value * (1 + juros)) / installments
-    valorTotalParcelado: float = valorDaParcela * installments
+    # Calcula juros e valores
+    juros = fees_calc(quantidade_parcelas)
+    valor_parcela: float = (valor_pedido * (1 + juros)) / quantidade_parcelas
+    valor_total_parcelado: float = valor_parcela * quantidade_parcelas
 
-    # Exibe os resultados para o usuário
-    print(f"{Style.GREEN}O valor das parcelas é de: R$ {valorDaParcela:.2f}")
-    print(f"{Style.GREEN}O valor total parcelado é de: R$ {valorTotalParcelado:.2f}")
+    # Exibe resultados
+    print(f"{Style.GREEN}O valor das parcelas é de: R$ {valor_parcela:.2f}")
+    print(f"{Style.GREEN}O valor total parcelado é de: R$ {valor_total_parcelado:.2f}")
     print(f"{Style.RESET}" + ("-" * 80))
 
     # Exibe cotinuar ou sair
     if input("Deseja realizar outro pedido? (s/n): ").strip().lower() == "n":
+        print(f"{Style.GREEN}Obrigado por usar a loja!{Style.RESET}")
         break
