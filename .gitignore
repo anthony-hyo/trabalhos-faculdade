@@ -1,0 +1,17 @@
+# Ignore virtual environment
+.venv/
+
+# Bytecode
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
