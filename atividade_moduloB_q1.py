@@ -68,6 +68,6 @@ while True:
     print(f"{Style.RESET}" + ("-" * 80))
 
     # Exibe cotinuar ou sair
-    if input("Deseja realizar outro pedido? (s/n): ").strip().lower() == "n":
+    if input("Deseja realizar outro pedido? (S/N): ").strip().lower() == "n":
         print(f"{Style.GREEN}Obrigado por usar a loja!{Style.RESET}")
         break
