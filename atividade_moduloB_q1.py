@@ -36,6 +36,8 @@ def fees_calc(parcelas: int) -> float:
     """Retorna a taxa de juros de acordo com a quantidade de parcelas
 
     :param parcelas: Quantidade de percelas
+
+    :return: float
     """
     if 4 <= parcelas < 6:
         return .04
