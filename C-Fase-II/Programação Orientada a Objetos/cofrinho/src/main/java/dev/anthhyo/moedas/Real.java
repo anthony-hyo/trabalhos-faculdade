@@ -12,7 +12,7 @@ public class Real extends Moeda {
 
 	@Override
 	public void info() {
-		ConsoleIO.printOpcao("Real (BRL)", "R$%s".formatted(valor));
+		ConsoleIO.printOpcao("Real (BRL)", "R$%.2f".formatted(valor));
 	}
 
 	@Override

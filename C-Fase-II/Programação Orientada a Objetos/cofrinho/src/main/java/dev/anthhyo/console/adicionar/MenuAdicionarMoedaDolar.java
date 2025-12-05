@@ -19,7 +19,7 @@ public class MenuAdicionarMoedaDolar extends dev.anthhyo.console.Menu {
 		printBase();
 
 		// Pega o valor digitado pelo usuário
-		double valor = Main.CONSOLE.getDouble("Entre com o valor:", "Valor é invalido! digite apenas numeros.");
+		double valor = MenuAdicionarMoedaReal.getValor();
 
 		// Cria nova instância de Dólar e adiciona no cofrinho
 		Main.COFRINHO.adicionar(new Dolar(valor));

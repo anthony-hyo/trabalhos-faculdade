@@ -12,7 +12,7 @@ public class Euro extends Moeda {
 
 	@Override
 	public void info() {
-		ConsoleIO.printOpcao("Euro (EUR)", "€%s".formatted(valor));
+		ConsoleIO.printOpcao("Euro (EUR)", "€%.2f".formatted(valor));
 	}
 
 	@Override

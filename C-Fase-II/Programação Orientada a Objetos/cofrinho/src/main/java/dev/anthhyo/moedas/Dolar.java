@@ -12,7 +12,7 @@ public class Dolar extends Moeda {
 
 	@Override
 	public void info() {
-		ConsoleIO.printOpcao("Dólar (USD)", "$%s".formatted(valor));
+		ConsoleIO.printOpcao("Dólar (USD)", "$%.2f".formatted(valor));
 	}
 
 	@Override

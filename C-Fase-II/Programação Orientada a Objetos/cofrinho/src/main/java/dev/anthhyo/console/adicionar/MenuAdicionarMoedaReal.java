@@ -19,12 +19,35 @@ public class MenuAdicionarMoedaReal extends dev.anthhyo.console.Menu {
 		printBase();
 
 		// Pega o valor digitado pelo usuário
-		double valor = Main.CONSOLE.getDouble("Entre com o valor:", "Valor é invalido! digite apenas numeros.");
+		double valor = getValor();
 
 		// Cria nova instância de Dólar e adiciona no cofrinho
 		Main.COFRINHO.adicionar(new Real(valor));
 
 		ConsoleIO.printSucesso("Real (BRL) adicionado com sucesso!");
+	}
+
+	/**
+	 * Pega um valor double positivo
+	 *
+	 * @return um valor double positivo validado digitado pelo usuário
+	 */
+	public static double getValor() {
+		double valor;
+
+		while (true) {
+			valor = Main.CONSOLE.getDouble("Entre com o valor:", "Valor é invalido! digite apenas numeros.");
+
+			//Validar o valor se é menor ou igual a zero
+			if (valor <= 0) {
+				ConsoleIO.printOpcaoInvalida("O valor deve ser maior que zero!");
+				continue;
+			}
+
+			break;
+		}
+
+		return valor;
 	}
 
 }
