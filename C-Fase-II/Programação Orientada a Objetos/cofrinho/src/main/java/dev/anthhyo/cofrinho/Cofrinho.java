@@ -6,18 +6,16 @@ import dev.anthhyo.moedas.Moeda;
 import dev.anthhyo.utilidades.ConsoleIO;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Cofrinho {
 
-	public static final HashMap<Moedas, Double> cotacao = new HashMap<>() {
-		{
-			put(Moedas.DOLAR, 5.31d);
-			put(Moedas.EURO, 6.19d);
-			put(Moedas.REAL, 1d);
-		}
-	};
+	public static final Map<Moedas, Double> cotacao = Map.of(
+		Moedas.DOLAR, 5.31d,
+		Moedas.EURO, 6.19d,
+		Moedas.REAL, 1.0d
+	);
 
 	private final List<Moeda> listaMoedas = new ArrayList<>();
 

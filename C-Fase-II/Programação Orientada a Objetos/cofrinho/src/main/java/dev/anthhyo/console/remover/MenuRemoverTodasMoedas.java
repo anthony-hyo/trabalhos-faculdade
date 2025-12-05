@@ -12,7 +12,7 @@ public class MenuRemoverTodasMoedas extends dev.anthhyo.console.Menu {
 	public void print() {
 		printBase();
 
-		Main.COFRINHO.getListaMoedas().removeAll(Main.COFRINHO.getListaMoedas());
+		Main.COFRINHO.getListaMoedas().clear();
 	}
 
 }

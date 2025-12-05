@@ -8,7 +8,7 @@ import dev.anthhyo.console.total.MenuTotalEmReal;
 
 @dev.anthhyo.annotation.Menu(
 	header = "Cofrinho",
-	titulo = "titulo",
+	titulo = "Inicio",
 	informacao = "Inicio",
 	opcoes = {
 		@MenuOpcao(
