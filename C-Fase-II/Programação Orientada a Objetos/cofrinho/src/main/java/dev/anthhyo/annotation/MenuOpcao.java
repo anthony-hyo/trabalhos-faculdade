@@ -13,8 +13,6 @@ public @interface MenuOpcao {
 
 	int id();
 
-	String descricao();
-	
 	Class<? extends IMenu> cls();
 
 }

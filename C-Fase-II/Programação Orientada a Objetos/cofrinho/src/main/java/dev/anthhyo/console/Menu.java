@@ -33,13 +33,8 @@ public abstract class Menu implements IMenu {
 
 		ConsoleIO.printTitulo(this.titulo);
 
-		if (menu.opcoes().length == 0) {
-			//opcaoSelecionada(0);
-			return;
-		}
-
 		for (MenuOpcao opcoe : menu.opcoes()) {
-			ConsoleIO.printOpcao(opcoe.id(), opcoe.descricao());
+			ConsoleIO.printOpcao(opcoe.id(), opcoe.cls().getAnnotation(dev.anthhyo.annotation.Menu.class).titulo());
 		}
 
 		try {

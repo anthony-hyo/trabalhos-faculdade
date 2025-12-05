@@ -1,35 +1,25 @@
 package dev.anthhyo.console.remover;
 
 import dev.anthhyo.annotation.MenuOpcao;
-import dev.anthhyo.console.Menu;
-import dev.anthhyo.console.total.MenuTotalEmReal;
 
 @dev.anthhyo.annotation.Menu(
+	titulo = "Remover Moeda",
 	informacao = "Escolha a moeda desejada",
 	opcoes = {
 		@MenuOpcao(
-			id = MenuRemoverMoeda.REMOVER_BRL,
-			descricao = "Remover Real (BRL)",
-			cls = MenuTotalEmReal.class
+			id = 1,
+			cls = MenuRemoverMoedaReal.class
 		),
 		@MenuOpcao(
-			id = MenuRemoverMoeda.REMOVER_USD,
-			descricao = "Remover Dolar (USD)",
-			cls = MenuTotalEmReal.class
+			id = 2,
+			cls = MenuRemoverMoedaDolar.class
 		),
 		@MenuOpcao(
-			id = MenuRemoverMoeda.REMOVER_EUR,
-			descricao = "Remover Euro (EUR)",
-			cls = MenuTotalEmReal.class
+			id = 3,
+			cls = MenuRemoverMoedaEuro.class
 		),
 	}
 )
-public class MenuRemoverMoeda extends Menu {
-
-	public static final int REMOVER_BRL = 1;
-
-	public static final int REMOVER_USD = 2;
-
-	public static final int REMOVER_EUR = 3;
+public class MenuRemoverMoeda extends dev.anthhyo.console.Menu {
 
 }

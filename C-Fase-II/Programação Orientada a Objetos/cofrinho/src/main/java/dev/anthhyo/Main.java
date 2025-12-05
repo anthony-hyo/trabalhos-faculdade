@@ -5,7 +5,7 @@ import dev.anthhyo.console.MenuInicio;
 
 public class Main {
 
-	public static final Cofrinho cofrinho = new Cofrinho();
+	public static final Cofrinho COFRINHO = new Cofrinho();
 
 	public static void main(String[] args) {
 		while (true) new MenuInicio().print();
