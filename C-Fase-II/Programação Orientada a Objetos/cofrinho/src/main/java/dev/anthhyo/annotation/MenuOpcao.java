@@ -1,5 +1,7 @@
 package dev.anthhyo.annotation;
 
+import dev.anthhyo.interfaces.IMenu;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,5 +14,7 @@ public @interface MenuOpcao {
 	int id();
 
 	String descricao();
+	
+	Class<? extends IMenu> cls();
 
 }
