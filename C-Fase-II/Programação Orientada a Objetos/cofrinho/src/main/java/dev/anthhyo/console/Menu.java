@@ -14,8 +14,38 @@ public abstract class Menu implements IMenu {
 
 	protected String titulo;
 
+	private static MenuOpcao validarOpcao(dev.anthhyo.annotation.Menu menu) {
+		while (true) {
+			int selecionado = new ConsoleIO().getInt("Escolha a opção desejada: ", "Por favor digite apenas números");
+
+			Optional<MenuOpcao> menuOpcaoOptional = Arrays.stream(menu.opcoes()).filter(opcao -> opcao.id() == selecionado).findAny();
+
+			if (menuOpcaoOptional.isEmpty()) {
+				ConsoleIO.printOpcaoInvalida();
+				continue;
+			}
+
+			return menuOpcaoOptional.get();
+		}
+	}
+
 	@Override
 	public void print() {
+		dev.anthhyo.annotation.Menu menu = printBase();
+
+		for (MenuOpcao opcoe : menu.opcoes()) {
+			ConsoleIO.printOpcao(opcoe.id(), opcoe.cls().getAnnotation(dev.anthhyo.annotation.Menu.class).titulo());
+		}
+
+		try {
+			validarOpcao(menu).cls().getDeclaredConstructor().newInstance().print();
+		} catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+		         NoSuchMethodException e) {
+			ConsoleIO.printOpcaoInvalida(e.getCause().getMessage());
+		}
+	}
+
+	protected dev.anthhyo.annotation.Menu printBase() {
 		Class<? extends Menu> cls = this.getClass();
 
 		if (!cls.isAnnotationPresent(dev.anthhyo.annotation.Menu.class)) {
@@ -33,30 +63,7 @@ public abstract class Menu implements IMenu {
 
 		ConsoleIO.printTitulo(this.titulo);
 
-		for (MenuOpcao opcoe : menu.opcoes()) {
-			ConsoleIO.printOpcao(opcoe.id(), opcoe.cls().getAnnotation(dev.anthhyo.annotation.Menu.class).titulo());
-		}
-
-		try {
-			validarOpcao(menu).cls().getDeclaredConstructor().newInstance().print();
-		} catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-			ConsoleIO.printOpcaoInvalida(e.getCause().getMessage());
-		}
-	}
-
-	private static MenuOpcao validarOpcao(dev.anthhyo.annotation.Menu menu) {
-		while (true) {
-			int selecionado = new ConsoleIO().getInt("Escolha a opção desejada: ", "Por favor digite apenas números");
-
-			Optional<MenuOpcao> menuOpcaoOptional = Arrays.stream(menu.opcoes()).filter(opcao -> opcao.id() == selecionado).findAny();
-
-			if (menuOpcaoOptional.isEmpty()) {
-				ConsoleIO.printOpcaoInvalida();
-				continue;
-			}
-
-			return menuOpcaoOptional.get();
-		}
+		return menu;
 	}
 
 }

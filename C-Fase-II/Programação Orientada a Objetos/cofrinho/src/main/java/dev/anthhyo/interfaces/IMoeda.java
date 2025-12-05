@@ -4,6 +4,6 @@ public interface IMoeda {
 
 	void info();
 
-	void converter();
+	double converter();
 
 }

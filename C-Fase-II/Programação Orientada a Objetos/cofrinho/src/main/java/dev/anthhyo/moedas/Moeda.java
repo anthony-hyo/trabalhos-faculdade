@@ -3,17 +3,15 @@ package dev.anthhyo.moedas;
 import dev.anthhyo.interfaces.IMoeda;
 
 public abstract class Moeda implements IMoeda {
-	
-	protected double valor = 0f;
 
-	@Override
-	public void info() {
-		throw new UnsupportedOperationException("Método não implementado");
+	protected final double valor;
+
+	protected Moeda(double valor) {
+		this.valor = valor;
 	}
 
-	@Override
-	public void converter() {
-		throw new UnsupportedOperationException("Método não implementado");
+	public double getValor() {
+		return valor;
 	}
 
 }

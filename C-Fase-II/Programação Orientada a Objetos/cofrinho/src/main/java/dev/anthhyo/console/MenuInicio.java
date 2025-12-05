@@ -4,8 +4,6 @@ import dev.anthhyo.annotation.MenuOpcao;
 import dev.anthhyo.console.adicionar.MenuAdicionarMoeda;
 import dev.anthhyo.console.listar.MenuListarMoeda;
 import dev.anthhyo.console.remover.MenuRemoverMoeda;
-import dev.anthhyo.console.total.MenuTotalEmDolar;
-import dev.anthhyo.console.total.MenuTotalEmEuro;
 import dev.anthhyo.console.total.MenuTotalEmReal;
 
 @dev.anthhyo.annotation.Menu(
@@ -31,14 +29,6 @@ import dev.anthhyo.console.total.MenuTotalEmReal;
 		),
 		@MenuOpcao(
 			id = 5,
-			cls = MenuTotalEmDolar.class
-		),
-		@MenuOpcao(
-			id = 6,
-			cls = MenuTotalEmEuro.class
-		),
-		@MenuOpcao(
-			id = 7,
 			cls = MenuTotalEmReal.class
 		)
 	}

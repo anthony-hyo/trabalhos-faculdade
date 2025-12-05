@@ -1,7 +1,9 @@
 package dev.anthhyo.cofrinho;
 
 import dev.anthhyo.enums.Moedas;
+import dev.anthhyo.interfaces.IMoeda;
 import dev.anthhyo.moedas.Moeda;
+import dev.anthhyo.utilidades.ConsoleIO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,20 +21,31 @@ public class Cofrinho {
 
 	private final List<Moeda> listaMoedas = new ArrayList<>();
 
+	public List<Moeda> getListaMoedas() {
+		return listaMoedas;
+	}
+
 	public void adicionar(Moeda moeda) {
 		listaMoedas.add(moeda);
 	}
 
-	public void remover(Moeda moeda) {
-		listaMoedas.remove(moeda);
+	public boolean remover(Moeda moeda) {
+		return listaMoedas.remove(moeda);
 	}
 
 	public void listagemMoedas() {
+		if (listaMoedas.isEmpty()) {
+			ConsoleIO.printOpcaoInvalida("Cofrinho Vazio!");
+		}
 
+		listaMoedas.forEach(IMoeda::info);
 	}
 
-	public void totalConvertido() {
-
+	public double totalConvertido() {
+		return listaMoedas
+			.stream()
+			.mapToDouble(IMoeda::converter)
+			.sum();
 	}
 
 }
