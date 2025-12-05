@@ -13,6 +13,7 @@ public class MenuTotalEmReal extends dev.anthhyo.console.Menu {
 	public void print() {
 		printBase();
 
+		// Exibe total convertido em real
 		ConsoleIO.printOpcao("R$ %.2f".formatted(Main.COFRINHO.totalConvertido()), "Total convertido para Real (BRL)");
 	}
 

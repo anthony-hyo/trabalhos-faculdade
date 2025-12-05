@@ -11,8 +11,12 @@ public abstract class Moeda implements IMoeda {
 	protected final int id;
 	protected final double valor;
 
+	/**
+	 * Cada moeda possui um ID único para permitir
+	 * remoção precisa mesmo com valores duplicados
+	 */
 	protected Moeda(double valor) {
-		this.id = ATOMIC_INTEGER.incrementAndGet();
+		this.id = ATOMIC_INTEGER.incrementAndGet(); // ID incremental
 		this.valor = valor;
 	}
 

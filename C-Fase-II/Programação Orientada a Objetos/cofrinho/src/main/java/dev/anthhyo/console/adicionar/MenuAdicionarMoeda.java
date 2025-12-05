@@ -3,6 +3,10 @@ package dev.anthhyo.console.adicionar;
 import dev.anthhyo.annotation.MenuOpcao;
 import dev.anthhyo.console.Menu;
 
+/**
+ * Exibe menu com opções para selecinar uma moeda
+ * para ser adicionada ao cofrinho
+ */
 @dev.anthhyo.annotation.Menu(
 	titulo = "Adicionar Moeda",
 	informacao = "Escolha a moeda desejada",

@@ -2,6 +2,10 @@ package dev.anthhyo.console.remover;
 
 import dev.anthhyo.annotation.MenuOpcao;
 
+/**
+ * Exibe menu com opções para selecinar uma moeda
+ * para ser removida do cofrinho
+ */
 @dev.anthhyo.annotation.Menu(
 	titulo = "Remover Moeda",
 	informacao = "Escolha a moeda desejada",

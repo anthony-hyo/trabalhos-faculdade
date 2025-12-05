@@ -15,6 +15,10 @@ public abstract class Menu implements IMenu {
 
 	protected String titulo;
 
+	/**
+	 * Valida a opção escolhida pelo
+	 * usuário e retorna MenuOpcao correspondente
+	 */
 	private static MenuOpcao validarOpcao(dev.anthhyo.annotation.Menu menu) {
 		while (true) {
 			int selecionado = Main.CONSOLE.getInt("Escolha a opção desejada: ", "Por favor digite apenas números");
@@ -30,14 +34,19 @@ public abstract class Menu implements IMenu {
 		}
 	}
 
+	/**
+	 * Exibe menu
+	 */
 	@Override
 	public void print() {
 		dev.anthhyo.annotation.Menu menu = printBase();
 
+		// Exibe opções do menu dinamicamente
 		for (MenuOpcao opcoe : menu.opcoes()) {
 			ConsoleIO.printOpcao(opcoe.id(), opcoe.cls().getAnnotation(dev.anthhyo.annotation.Menu.class).titulo());
 		}
 
+		// Instancia e executa menu selecionado via reflexão
 		try {
 			validarOpcao(menu).cls().getDeclaredConstructor().newInstance().print();
 		} catch (InstantiationException | IllegalAccessException | InvocationTargetException |
@@ -46,6 +55,11 @@ public abstract class Menu implements IMenu {
 		}
 	}
 
+	/**
+	 * Exibe cabeçalho e título usando annotations.
+	 *
+	 * @return {@link dev.anthhyo.annotation.Menu}
+	 */
 	protected dev.anthhyo.annotation.Menu printBase() {
 		Class<? extends Menu> cls = this.getClass();
 
@@ -53,6 +67,7 @@ public abstract class Menu implements IMenu {
 			throw new UnsupportedOperationException("Missing @Menu annotation");
 		}
 
+		//Pega 
 		dev.anthhyo.annotation.Menu menu = cls.getAnnotation(dev.anthhyo.annotation.Menu.class);
 
 		this.header = menu.header();

@@ -12,6 +12,7 @@ public class MenuRemoverTodasMoedas extends dev.anthhyo.console.Menu {
 	public void print() {
 		printBase();
 
+		// Remove todas as moedas do cofrinho
 		Main.COFRINHO.getListaMoedas().clear();
 	}
 

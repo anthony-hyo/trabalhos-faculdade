@@ -11,7 +11,9 @@ public class Main {
 	public static final ConsoleIO CONSOLE = new ConsoleIO();
 
 	public static void main(String[] args) {
-		while (true) new MenuInicio().print();
+		while (true) {
+			new MenuInicio().print();
+		}
 	}
 
 }

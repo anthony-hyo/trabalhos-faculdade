@@ -12,6 +12,8 @@ public class MenuListarMoeda extends dev.anthhyo.console.Menu {
 	public void print() {
 		printBase();
 
+		// Chama listagem do Cofrinho
+		// Cada moeda sabe como se apresentar (info())
 		Main.COFRINHO.listagemMoedas();
 	}
 
