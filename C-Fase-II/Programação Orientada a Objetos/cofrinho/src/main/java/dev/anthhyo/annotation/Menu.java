@@ -10,8 +10,8 @@ import java.lang.annotation.Target;
 public @interface Menu {
 
 	String header() default "none";
-	
-	String titulo() default "none";
+
+	String titulo();
 	
 	String informacao();
 	

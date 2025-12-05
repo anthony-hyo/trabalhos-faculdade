@@ -29,7 +29,7 @@ import dev.anthhyo.console.total.MenuTotalEmReal;
 		),
 		@MenuOpcao(
 			id = 5,
-			cls = MenuTotalEmReal.class
+			cls = MenuSair.class
 		)
 	}
 )
