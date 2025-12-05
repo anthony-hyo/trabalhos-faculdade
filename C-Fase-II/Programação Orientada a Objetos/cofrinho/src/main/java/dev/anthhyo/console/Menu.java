@@ -47,14 +47,20 @@ public abstract class Menu implements IMenu {
 			ConsoleIO.printOpcao(opcoe.id(), opcoe.descricao());
 		}
 
-		int selecionado = new ConsoleIO().getInt(">", "Digite novamente");
+		opcaoSelecionada(validarOpcao(menu));
+	}
 
-		if (Arrays.stream(menu.opcoes()).noneMatch(opcao -> opcao.id() == selecionado)) {
-			System.out.println("Opcao Invalida");
-			return;
+	private static int validarOpcao(dev.anthhyo.annotation.Menu menu) {
+		while (true) {
+			int selecionado = new ConsoleIO().getInt("Escolha a opção desejada: ", "Por favor digite apenas números");
+
+			if (Arrays.stream(menu.opcoes()).noneMatch(opcao -> opcao.id() == selecionado)) {
+				ConsoleIO.printOpcaoInvalida();
+				continue;
+			}
+			
+			return selecionado;
 		}
-
-		opcaoSelecionada(selecionado);
 	}
 
 }

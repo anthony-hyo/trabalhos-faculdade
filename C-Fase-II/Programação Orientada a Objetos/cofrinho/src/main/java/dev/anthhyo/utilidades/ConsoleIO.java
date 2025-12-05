@@ -16,66 +16,57 @@ public class ConsoleIO {
 	}
 	
 	public static void printOpcao(int id, String descricao) {
-		System.out.println(Texto.BOLD + id + Texto.RESET + " - " + descricao);
+		System.out.printf("%s%d%s - %s%n", Texto.BOLD, id, Texto.RESET, descricao);
+	}
+	
+	public static void printOpcaoInvalida(String texto) {
+		System.out.printf("%s%s%s%s%n", Texto.BOLD, Texto.BRIGHT_RED, texto, Texto.RESET);
+	}
+	
+	public static void printOpcaoInvalida() {
+		printOpcaoInvalida("Opção inválida.");
 	}
 
-	public int getString(String mensagem, String mensagemErro) {
-		return getInt(mensagem, mensagemErro, false);
-	}
-
-	public String getString(String mensagem, String mensagemErro, boolean temError) {
+	public String getString(String mensagem, String mensagemErro) {
 		try {
-			if (!temError) {
-				System.out.printf("%s: ", mensagem);
-			}
+			System.out.printf("%s: ", mensagem);
 
 			return scanner.next();
 		} catch (InputMismatchException e) {
-			System.out.printf("%s: ", mensagemErro);
+			ConsoleIO.printOpcaoInvalida(mensagemErro);
 
 			scanner.nextLine();
 
-			return getString(mensagem, mensagemErro, true);
+			return getString(mensagem, mensagemErro);
 		}
 	}
 
-	public int getDouble(String mensagem, String mensagemErro) {
-		return getInt(mensagem, mensagemErro, false);
-	}
-
-	public double getDouble(String mensagem, String mensagemErro, boolean temError) {
+	public double getDouble(String mensagem, String mensagemErro) {
 		try {
-			if (!temError) {
-				System.out.printf("%s: ", mensagem);
-			}
+			System.out.printf("%s: ", mensagem);
 
 			return scanner.nextDouble();
 		} catch (InputMismatchException e) {
-			System.out.printf("%s: ", mensagemErro);
+			ConsoleIO.printOpcaoInvalida(mensagemErro);
 
 			scanner.nextLine();
 
-			return getDouble(mensagem, mensagemErro, true);
+			return getDouble(mensagem, mensagemErro);
 		}
 	}
 
-	public int getInt(String mensagem, String mensagemErro) {
-		return getInt(mensagem, mensagemErro, false);
-	}
 
-	public int getInt(String mensagem, String mensagemErro, boolean temError) {
+	public Integer getInt(String mensagem, String mensagemErro) {
 		try {
-			if (!temError) {
-				System.out.printf("%s ", mensagem);
-			}
+			System.out.printf("%s ", mensagem);
 
 			return scanner.nextInt();
 		} catch (InputMismatchException e) {
-			System.out.printf("%s ", mensagemErro);
+			ConsoleIO.printOpcaoInvalida(mensagemErro);
 
 			scanner.nextLine();
 
-			return getInt(mensagem, mensagemErro, true);
+			return getInt(mensagem, mensagemErro);
 		}
 	}
 
