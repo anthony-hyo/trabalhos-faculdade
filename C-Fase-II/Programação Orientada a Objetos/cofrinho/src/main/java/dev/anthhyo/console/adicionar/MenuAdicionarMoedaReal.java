@@ -4,6 +4,9 @@ import dev.anthhyo.Main;
 import dev.anthhyo.moedas.Real;
 import dev.anthhyo.utilidades.ConsoleIO;
 
+/**
+ * Menu para adicionar moedas em {@link Real} (BRL) ao cofrinho
+ */
 @dev.anthhyo.annotation.Menu(
 	titulo = "Adicionar Real (BRL)",
 	informacao = "Adicionando em Real (BRL)"
@@ -12,6 +15,7 @@ public class MenuAdicionarMoedaReal extends dev.anthhyo.console.Menu {
 
 	@Override
 	public void print() {
+		// Exibe cabeçalho padrão
 		printBase();
 
 		// Pega o valor digitado pelo usuário

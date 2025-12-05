@@ -6,6 +6,9 @@ import dev.anthhyo.console.listar.MenuListarMoeda;
 import dev.anthhyo.console.remover.MenuRemoverMoeda;
 import dev.anthhyo.console.total.MenuTotalEmReal;
 
+/**
+ * Exibe menu com opções para selecinar uma ação
+ */
 @dev.anthhyo.annotation.Menu(
 	header = "Cofrinho",
 	titulo = "Inicio",

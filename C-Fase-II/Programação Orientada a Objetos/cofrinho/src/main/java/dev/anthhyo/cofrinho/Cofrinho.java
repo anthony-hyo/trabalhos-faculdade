@@ -13,9 +13,9 @@ public class Cofrinho {
 
 	//Lista das moedas com suas cotaões para BRL
 	public static final Map<Moedas, Double> cotacao = Map.of(
-		Moedas.DOLAR, 5.31d,
-		Moedas.EURO, 6.19d,
-		Moedas.REAL, 1.0d
+		Moedas.DOLAR, 5.31d,  // 1 USD = 5.31 BRL
+		Moedas.EURO, 6.19d,   // 1 EUR = 6.19 BRL  
+		Moedas.REAL, 1.0d     // 1 BRL = 1.0 BRL
 	);
 
 	private final List<Moeda> listaMoedas = new ArrayList<>();
@@ -33,10 +33,12 @@ public class Cofrinho {
 	}
 
 	/**
-	 * chama info() de cada tipo de moeda e exibe
-	 * para o usuário
+	 * Exibe informações de todas as moedas do cofrinho.
+	 * <p>
+	 * Chama info() de cada tipo de moeda e exibe para o usuário
 	 */
 	public void listagemMoedas() {
+		// Verifica se o cofrinho está vazio antes de listar
 		if (listaMoedas.isEmpty()) {
 			ConsoleIO.printOpcaoInvalida("Cofrinho Vazio!");
 		}
@@ -45,14 +47,16 @@ public class Cofrinho {
 	}
 
 	/**
-	 * chama converter() de cada tipo de moeda e
-	 * soma o resultado de cada moeda
+	 * Calcula o total de todas as moedas convertido para Real (BRL).
+	 * Chama converter() de cada tipo de moeda e soma o resultado de cada moeda
+	 *
+	 * @return valor total das moedas convertido para Real
 	 */
 	public double totalConvertido() {
 		return listaMoedas
 			.stream()
-			.mapToDouble(IMoeda::converter) //cada moeda converte seu valor para BRL
-			.sum();
+			.mapToDouble(IMoeda::converter) // Converte cada moeda para double (BRL)
+			.sum(); // Soma todos os valores convertidos
 	}
 
 }

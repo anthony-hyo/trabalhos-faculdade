@@ -6,9 +6,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Moeda implements IMoeda {
 
+	//Gerador de IDs únicos para cada moeda criada.
 	private static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger(0);
 
+	//Identificador único da moeda.
 	protected final int id;
+
+	//Valor da moeda.
 	protected final double valor;
 
 	/**
@@ -16,7 +20,7 @@ public abstract class Moeda implements IMoeda {
 	 * remoção precisa mesmo com valores duplicados
 	 */
 	protected Moeda(double valor) {
-		this.id = ATOMIC_INTEGER.incrementAndGet(); // ID incremental
+		this.id = ATOMIC_INTEGER.incrementAndGet(); // Gera ID único incremental
 		this.valor = valor;
 	}
 

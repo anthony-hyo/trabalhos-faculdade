@@ -35,19 +35,24 @@ public abstract class Menu implements IMenu {
 	}
 
 	/**
-	 * Exibe menu
+	 * Exibe menu e processa navegação
 	 */
 	@Override
 	public void print() {
+		// Exibe cabeçalho padrão
 		dev.anthhyo.annotation.Menu menu = printBase();
 
-		// Exibe opções do menu dinamicamente
+		//Exibe opções baseadas na annotation
 		for (MenuOpcao opcoe : menu.opcoes()) {
+			//Acessa annotation para obter título e exibe
 			ConsoleIO.printOpcao(opcoe.id(), opcoe.cls().getAnnotation(dev.anthhyo.annotation.Menu.class).titulo());
 		}
 
 		// Instancia e executa menu selecionado via reflexão
 		try {
+			//Valida entrada do usuário
+			//Cria instância da classe selecionada dinamicamente   
+			//Executa método print() da instância criada
 			validarOpcao(menu).cls().getDeclaredConstructor().newInstance().print();
 		} catch (InstantiationException | IllegalAccessException | InvocationTargetException |
 		         NoSuchMethodException e) {
@@ -59,6 +64,7 @@ public abstract class Menu implements IMenu {
 	 * Exibe cabeçalho e título usando annotations.
 	 *
 	 * @return {@link dev.anthhyo.annotation.Menu}
+	 * @throws UnsupportedOperationException se annotation @Menu estiver ausente
 	 */
 	protected dev.anthhyo.annotation.Menu printBase() {
 		Class<? extends Menu> cls = this.getClass();
@@ -67,16 +73,18 @@ public abstract class Menu implements IMenu {
 			throw new UnsupportedOperationException("Missing @Menu annotation");
 		}
 
-		//Pega 
+		//Pega annotation
 		dev.anthhyo.annotation.Menu menu = cls.getAnnotation(dev.anthhyo.annotation.Menu.class);
 
 		this.header = menu.header();
 		this.titulo = menu.informacao();
 
+		//Header pode ser suprimido via "none"
 		if (!this.header.equals("none")) {
 			ConsoleIO.printHeader(this.header);
 		}
 
+		//Todo menu tem título
 		ConsoleIO.printTitulo(this.titulo);
 
 		return menu;

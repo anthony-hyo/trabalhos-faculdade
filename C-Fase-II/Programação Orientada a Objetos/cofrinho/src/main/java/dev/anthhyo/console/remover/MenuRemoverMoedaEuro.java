@@ -7,6 +7,9 @@ import dev.anthhyo.utilidades.ConsoleIO;
 
 import java.util.Optional;
 
+/**
+ * Menu para remover moedas em {@link Euro} (EUR) do cofrinho
+ */
 @dev.anthhyo.annotation.Menu(
 	titulo = "Remover Euro (EUR)",
 	informacao = "Removendo moeda em Euro (EUR)"
@@ -15,6 +18,7 @@ public class MenuRemoverMoedaEuro extends dev.anthhyo.console.Menu {
 
 	@Override
 	public void print() {
+		// Exibe cabeçalho padrão
 		printBase();
 
 		// Filtra apenas moedas do tipo usando stream e exibe para o usuário

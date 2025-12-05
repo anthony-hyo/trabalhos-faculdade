@@ -11,6 +11,7 @@ public class Main {
 	public static final ConsoleIO CONSOLE = new ConsoleIO();
 
 	public static void main(String[] args) {
+		// Loop principal do sistema - continua até o usuário escolher sair
 		while (true) {
 			new MenuInicio().print();
 		}
