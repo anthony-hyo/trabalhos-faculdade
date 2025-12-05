@@ -1,5 +1,7 @@
 package dev.anthhyo.cliente;
 
-public record Client(String nome, String cpf) {
+import dev.anthhyo.cofrinho.Cofrinho;
+
+public record Client(String nome, String cpf, Cofrinho cofrinho) {
 
 }
