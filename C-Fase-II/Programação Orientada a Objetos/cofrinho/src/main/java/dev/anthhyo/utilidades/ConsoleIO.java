@@ -3,9 +3,21 @@ package dev.anthhyo.utilidades;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ScannerArgs {
+public class ConsoleIO {
 
 	private final Scanner scanner = new Scanner(System.in);
+	
+	public static void printHeader(String texto) {
+		System.out.printf("%s%s%s                    %s                    %s%n", Texto.BG_BRIGHT_PURPLE, Texto.BOLD, Texto.BLACK, texto, Texto.RESET);
+	}
+	
+	public static void printTitulo(String texto) {
+		System.out.printf("%s%s>> %s%s%n", Texto.ITALIC, Texto.BRIGHT_PURPLE, texto, Texto.RESET);
+	}
+	
+	public static void printOpcao(int id, String descricao) {
+		System.out.println(Texto.BOLD + id + Texto.RESET + " - " + descricao);
+	}
 
 	public int getString(String mensagem, String mensagemErro) {
 		return getInt(mensagem, mensagemErro, false);
@@ -54,12 +66,12 @@ public class ScannerArgs {
 	public int getInt(String mensagem, String mensagemErro, boolean temError) {
 		try {
 			if (!temError) {
-				System.out.printf("%s: ", mensagem);
+				System.out.printf("%s ", mensagem);
 			}
 
 			return scanner.nextInt();
 		} catch (InputMismatchException e) {
-			System.out.printf("%s: ", mensagemErro);
+			System.out.printf("%s ", mensagemErro);
 
 			scanner.nextLine();
 
