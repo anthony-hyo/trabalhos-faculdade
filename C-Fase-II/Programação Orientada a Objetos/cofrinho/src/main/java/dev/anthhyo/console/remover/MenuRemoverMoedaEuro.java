@@ -29,7 +29,7 @@ public class MenuRemoverMoedaEuro extends dev.anthhyo.console.Menu {
 			i++;
 		}
 
-		int valor = new ConsoleIO().getInt("Escolha a moeda que deseja remover:", "Moeda inválida! Digite apenas números.");
+		int valor = Main.CONSOLE.getInt("Escolha a moeda que deseja remover:", "Moeda inválida! Digite apenas números.");
 
 		if (moedas.containsKey(valor)) {
 			if (Main.COFRINHO.remover(moedas.get(valor))) {

@@ -1,5 +1,6 @@
 package dev.anthhyo.console;
 
+import dev.anthhyo.Main;
 import dev.anthhyo.annotation.MenuOpcao;
 import dev.anthhyo.interfaces.IMenu;
 import dev.anthhyo.utilidades.ConsoleIO;
@@ -16,7 +17,7 @@ public abstract class Menu implements IMenu {
 
 	private static MenuOpcao validarOpcao(dev.anthhyo.annotation.Menu menu) {
 		while (true) {
-			int selecionado = new ConsoleIO().getInt("Escolha a opção desejada: ", "Por favor digite apenas números");
+			int selecionado = Main.CONSOLE.getInt("Escolha a opção desejada: ", "Por favor digite apenas números");
 
 			Optional<MenuOpcao> menuOpcaoOptional = Arrays.stream(menu.opcoes()).filter(opcao -> opcao.id() == selecionado).findAny();
 

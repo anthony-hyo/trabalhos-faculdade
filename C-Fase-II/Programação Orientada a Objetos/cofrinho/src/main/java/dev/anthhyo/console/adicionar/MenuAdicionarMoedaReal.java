@@ -14,7 +14,7 @@ public class MenuAdicionarMoedaReal extends dev.anthhyo.console.Menu {
 	public void print() {
 		printBase();
 
-		double valor = new ConsoleIO().getDouble("Entre com o valor:", "Valor é invalido! digite apenas numeros.");
+		double valor = Main.CONSOLE.getDouble("Entre com o valor:", "Valor é invalido! digite apenas numeros.");
 
 		Main.COFRINHO.adicionar(new Real(valor));
 

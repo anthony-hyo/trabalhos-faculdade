@@ -12,9 +12,9 @@ public @interface Menu {
 	String header() default "none";
 
 	String titulo();
-	
+
 	String informacao();
-	
+
 	MenuOpcao[] opcoes() default {};
-	
+
 }
