@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 @dev.anthhyo.annotation.Menu(
 	titulo = "Remover Dólar (USD)",
-	informacao = "Adicionando em Dólar (USD)"
+	informacao = "Removendo moeda em Dólar (USD)"
 )
 public class MenuRemoverMoedaDolar extends dev.anthhyo.console.Menu {
 

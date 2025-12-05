@@ -18,6 +18,10 @@ import dev.anthhyo.annotation.MenuOpcao;
 			id = 3,
 			cls = MenuRemoverMoedaEuro.class
 		),
+		@MenuOpcao(
+			id = 4,
+			cls = MenuRemoverTodasMoedas.class
+		),
 	}
 )
 public class MenuRemoverMoeda extends dev.anthhyo.console.Menu {
